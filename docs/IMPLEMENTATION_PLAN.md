@@ -12,7 +12,7 @@
 
 ## Phase 1 — minimum viable component
 
-Verify current MCP protocol versions and DevKit primitives; define allowlists, transport, timeouts, output limits, and untrusted-data handling.
+Verify official MCP protocol versions and candidate SDK compatibility; define allowlists, transport, timeouts, output limits, and untrusted-data handling.
 
 - [ ] Implement only this repository's owned responsibility; reuse stable interfaces rather than copying adjacent modules.
 - [ ] Add typed configuration validation, safe defaults, structured redacted logging, and correlation IDs.
