@@ -30,3 +30,17 @@ DevKit README describes MCP server/client primitives, resources, prompts, securi
 ## Open questions
 
 Hosting topology, model provider selection, database, queue, cache, vector store, identity provider, and deployment target remain undecided. They must be resolved in an ADR, not silently assumed.
+
+
+## Current MCP protocol research update — 2026-10-22
+
+The official MCP project published specification revision **2026-07-28**. Its release notes describe a stateless protocol core, header-based routing, authorization hardening, Tasks as an extension, and a formal deprecation policy. The official TypeScript SDK v2 is the current stable line for that revision; SDK v1.x implements the 2025-11-25 specification and is a separate maintenance line. Do not assume the DevKit `@woho/mcp` package implements the new revision without checking its actual release and tests.
+
+Required integration evidence:
+
+- [MCP 2026-07-28 release notes](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
+- [MCP TypeScript SDK v2](https://ts.sdk.modelcontextprotocol.io/v2/)
+- [SDK v2 support for 2026-07-28](https://ts.sdk.modelcontextprotocol.io/v2/migration/support-2026-07-28)
+- [SDK v1 support statement](https://ts.sdk.modelcontextprotocol.io/)
+
+Before coding, record exact supported spec versions, transports, auth behavior, server allowlisting, extension/Tasks behavior, timeouts/output limits, and compatibility policy in an ADR. Treat all server metadata and tool/resource output as untrusted data.
