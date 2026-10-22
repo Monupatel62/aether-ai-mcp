@@ -12,12 +12,10 @@ Protocol adapter; never treats remote tool descriptions as trusted instructions.
 
 ## Dependencies
 
-aether-ai-tools, aether-ai-security, aether-ai-observability; WoHo AI DevKit @woho/mcp where compatible.
+aether-ai-tools, aether-ai-security, and aether-ai-observability.
 
 ## Project rules
 
-- Keep WoHoTech separate; this repository belongs to the new Aether AI project.
-- Treat the existing [WoHo AI DevKit](https://github.com/Monupatel62/woho-ai-devkit) as a separate dependency. Do not copy or rewrite it without a reviewed technical reason.
 - No implementation starts until the documentation and cross-repository contracts are reviewed.
 - Do not commit secrets, API keys, user data, or production credentials.
 - Public interfaces, security decisions, and non-obvious implementation choices must be documented.
