@@ -8,7 +8,7 @@ Treat remote MCP metadata and tool output as untrusted; apply allowlists, timeou
 
 ## Dependencies
 
-aether-ai-tools, aether-ai-security, aether-ai-observability, compatible @woho/mcp primitives.
+aether-ai-tools, aether-ai-security, and aether-ai-observability.
 
 ## Data and control flow
 
