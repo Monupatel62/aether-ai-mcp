@@ -8,7 +8,7 @@ MCP client/server protocol boundary and safe invocation contract
 
 ## Direct dependencies
 
-tools, security, observability, compatible DevKit MCP.
+aether-ai-tools, aether-ai-security, and aether-ai-observability.
 
 ## Required rules
 
