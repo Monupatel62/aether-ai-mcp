@@ -1,6 +1,6 @@
 # aether-ai-mcp
 
-> **Status: Documentation phase.** No application code or production deployment has been started in this repository.
+> **Status: Initial JSON-RPC envelope validation utilities are in review.** No MCP transport, server registry, credential management, or production deployment is implemented.
 
 ## Purpose
 
@@ -19,6 +19,10 @@ aether-ai-tools, aether-ai-security, and aether-ai-observability.
 - No implementation starts until the documentation and cross-repository contracts are reviewed.
 - Do not commit secrets, API keys, user data, or production credentials.
 - Public interfaces, security decisions, and non-obvious implementation choices must be documented.
+
+## Initial implementation
+
+The draft package validates bounded JSON-RPC 2.0 request envelopes and correlates responses by request ID, with payload size limits. Remote result and description content remains untrusted. This does not implement the MCP transport lifecycle, protocol-version negotiation, server allowlists, authentication, credential storage, tool execution, or policy checks.
 
 ## Documentation
 
