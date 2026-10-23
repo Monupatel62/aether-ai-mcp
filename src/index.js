@@ -1,3 +1,4 @@
+import { isIP } from "node:net";
 const ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/;
 const ALLOWED_CAPABILITIES = new Set(["tools/list", "tools/call", "resources/list", "resources/read", "prompts/list", "prompts/get"]);
 export class McpBoundaryError extends Error {
@@ -52,6 +53,19 @@ export function createMcpRegistry({ serverAllowlist, authorize, transport, timeo
 }
 function isAllowedUrl(value) {
   if (typeof value !== "string") return false;
-  try { const url = new URL(value); return url.protocol === "https:" && !url.username && !url.password && !url.hash; }
-  catch { return false; }
+  try {
+    const url = new URL(value);
+    const hostname = url.hostname.toLowerCase().replace(/^\\[|\\]$/g, "");
+    return url.protocol === "https:"
+      && !url.username
+      && !url.password
+      && !url.hash
+      && !url.search
+      && !isIP(hostname)
+      && hostname !== "localhost"
+      && !hostname.endsWith(".localhost")
+      && !hostname.endsWith(".local")
+      && !hostname.endsWith(".internal")
+      && !hostname.endsWith(".test");
+  } catch { return false; }
 }
