@@ -12,7 +12,7 @@ Protocol adapter; never treats remote tool descriptions as trusted instructions.
 
 ## Dependencies
 
-aether-ai-tools, aether-ai-security, and aether-ai-observability.
+MCP consumes the public, protocol-neutral invocation contract from `aether-ai-tools`, with security/authentication contracts from `aether-ai-security` and `aether-ai-auth`, plus telemetry conventions from `aether-ai-observability`. Tools owns execution authorization, approval, isolation and egress policy; MCP adapts the protocol and must not bypass those controls.
 
 ## Project rules
 
