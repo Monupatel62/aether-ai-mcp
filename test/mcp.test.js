@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createMcpRegistry } from "../src/index.js";
 
-const serverUrl = "https://mcp.example.test/v1";
+const serverUrl = "https://mcp.example.com/v1";
 function registry(overrides = {}) {
   return createMcpRegistry({ serverAllowlist: [serverUrl], authorize: async () => true, transport: async () => ({ content: [] }), timeoutMs: 30, ...overrides });
 }
@@ -21,6 +21,9 @@ test("fails closed when authorization denies or is unavailable", async () => {
 
 test("rejects insecure allowlists and oversized payloads", async () => {
   assert.throws(() => registry({ serverAllowlist: ["http://insecure.test"] }), /HTTPS/);
+  assert.throws(() => registry({ serverAllowlist: ["https://127.0.0.1"] }), /HTTPS/);
+  assert.throws(() => registry({ serverAllowlist: ["https://localhost"] }), /HTTPS/);
+  assert.throws(() => registry({ serverAllowlist: ["https://public.example.com/path?token=abc"] }), /HTTPS/);
   await assert.rejects(registry({ maxRequestBytes: 8 }).invoke({ principal: { id: "u1", tenantId: "t1" }, serverUrl, capability: "tools/call", payload: { input: "far too long" } }), (e) => e.code === "request_too_large");
 });
 
