@@ -30,3 +30,15 @@ For each future change, record: date; exact files; why the change is needed; alt
 - Reviewed official MCP 2026-07-28 release notes, OWASP GenAI 2026 Top 10 announcement, OpenTelemetry GenAI conventions, GitHub Actions secure-use guidance, and AI DIAL Core documentation.
 - Master audit and threat model are linked from the platform repository.
 - No application code, production config, or security implementation was added; these are design requirements, not claims of implemented controls.
+
+
+## 2026-10-23 — Protocol adapter boundary alignment
+
+- Updated architecture and README to clarify MCP's protocol-adapter role and Tools ownership of permission/risk checks, approval, execution isolation, output caps, and egress policy.
+- Clarified one-way contract direction: MCP consumes Tools' public protocol-neutral manifest/invocation contract via a composition root; Tools does not import MCP.
+- Added server-registration, capability-snapshot, revocation, credential-isolation, versioning, DNS/redirect validation, untrusted-content, stable-error, and non-idempotent retry boundaries.
+- Preserved open decisions: ADR-0021 membership/role authority, SDK/spec/transport matrix, credential provider, numeric limits, and deployment topology remain unselected.
+- Verification: edited architecture and README were fetched back from this branch; no runtime code or tests were added.
+- Security impact: describes fail-closed behavior when authentication, current authorization, Tools policy, isolation, or egress enforcement cannot be established.
+- Known limitation: this is contract alignment only. It does not prove MCP protocol conformance, secure transport behavior, tenant isolation, or production enforcement.
+- Follow-up: review against the Tools boundary PR and MCP trust-boundary PR; run the contract/compatibility gate only after the exact protocol and SDK line is approved.
