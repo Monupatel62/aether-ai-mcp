@@ -37,3 +37,11 @@ aether-ai-tools, aether-ai-security, and aether-ai-observability.
 ## Before coding
 
 Read the project specification, architecture, contracts, implementation plan, and work log. Update the docs in the same change whenever behavior, an API contract, a dependency, or a security boundary changes.
+
+
+## Implemented code baseline
+
+- Explicit HTTPS server allowlist and allowlisted MCP capability names.
+- Injected authorization and transport adapters, tenant/principal context, request/response size limits, timeout/cancellation, and safe error codes.
+- Node 20/22 CI with unit tests.
+- This adapter does not implement the MCP wire protocol, OAuth, DNS/IP egress controls, or a production sandbox; those are required before remote use.
